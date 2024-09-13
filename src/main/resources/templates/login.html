@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-th-replace="~{base::parent(~{::#content},~{::title},~{::script})}">
+
+<head>
+    <title>Login Page</title>
+</head>
+
+<body>
+    <section id="content">
+        <div class="grid grid-cols-12">
+
+            <div class="md:col-span-2 lg:col-span-3 xl:col-span-4"></div>
+            <div class="col-span-12 md:col-span-8 lg:col-span-6 xl:col-span-4">
+
+                <div
+                    class="block  p-6 bg-white border-t-8 border-indigo-500 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-indigo-700 dark:hover:bg-gray-700">
+                    <div data-th-replace="~{message::messagebox}"></div>
+                    <h5 class="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white">Login
+                    </h5>
+                    <div th:if="${param.error}">
+                        Invalid username and password.</div>
+                    <div th:if="${param.logout}">
+                        You have been logged out.</div>
+                    <form th:action="@{'/login'}" method="post">
+                        <div class="mb-3">
+                            <label for="email"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">UserName</label>
+                            <input type="email" id="email" name="email"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="name@flowbite.com" required />
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="password"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                            <input type="password" id="password" name="password"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required />
+
+                        </div>
+
+
+                        <div class="mb-3 flex justify-center ">
+                            <button
+                                class="text-white  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><span>Login</span></button>
+                            <button type="reset"
+                                class="text-white ml-2  bg-blue-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300  font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-yellow-300 dark:focus:ring-blue-800"><span>Reset</span></button>
+
+                        </div>
+                    </form>
+
+                    <div class="social-button-container flex flex-col items-center">
+                        <a class="login-with-google-btn w-1/2  " data-th-href="@{'/oauth2/authorization/google'}">Sign in with
+                            google</a>
+                        <div class="w-1/2 mt-1">
+                            <a type="button"
+                            data-th-href="@{'/oauth2/authorization/github'}"
+                                class="py-2 px-4   max-w-md flex justify-center items-center bg-gray-600 hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="mr-2" viewBox="0 0 1792 1792">
+                                    <path
+                                        d="M896 128q209 0 385.5 103t279.5 279.5 103 385.5q0 251-146.5 451.5t-378.5 277.5q-27 5-40-7t-13-30q0-3 .5-76.5t.5-134.5q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-119-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-85-13.5q-45 113-8 204-79 87-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-39 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 88.5t.5 54.5q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103zm-477 1103q3-7-7-12-10-3-13 2-3 7 7 12 9 6 13-2zm31 34q7-5-2-16-10-9-16-3-7 5 2 16 10 10 16 3zm30 45q9-7 0-19-8-13-17-6-9 5 0 18t17 7zm42 42q8-8-4-19-12-12-20-3-9 8 4 19 12 12 20 3zm57 25q3-11-13-16-15-4-19 7t13 15q15 6 19-6zm63 5q0-13-17-11-16 0-16 11 0 13 17 11 16 0 16-11zm58-10q-2-11-18-9-16 3-14 15t18 8 14-14z">
+                                    </path>
+                                </svg>
+                                Sign in with GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <script>
+            console.log("hello Login");
+        </script>
+
+    </section>
+
+</body>
+
+</html>

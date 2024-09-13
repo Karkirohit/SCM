@@ -1,0 +1,3 @@
+client id:641125604826-htsj47465ei11vn900dsvtge6rgdbrkc.apps.googleusercontent.com
+
+client secret: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

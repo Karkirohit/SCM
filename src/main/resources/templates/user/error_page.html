@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::parent(~{::#content},~{::title},~{::script})}">
+
+<head>
+    <title>Error Page</title>
+</head>
+
+<body>
+    <section id="content" class="mt-2">
+        <div class="flex flex-col justify-center mx-auto bg-blue-500 text-center">
+
+            <div class="text-center mx-auto" data-th-replace="~{message::messagebox}"></div>
+
+
+            <p>Login filed user is not verified.</p>
+
+        </div>
+        <script>
+            console.log("hello home");
+        </script>
+
+    </section>
+
+</body>
+
+</html>
