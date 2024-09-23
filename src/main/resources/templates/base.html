@@ -16,14 +16,17 @@
 
 </head>
 
-<body class=" dark:bg-gray-800 dark:text-white bg-white">
+<body class=" dark:bg-gray-800 dark:text-white  bg-white">
     <!-- common header -->
 
     <!-- if user is logged in :navbar -->
     <div data-th-if="${loggedInUser}">
-        <div  data-th-replace="~{user/user_navbar::user-navbar}"></div>
+        <div data-th-replace="~{user/user_navbar::user-navbar}"></div>
     </div>
 
+    <div data-th-if="${loggedInUser}">
+        <div data-th-replace="~{user/sidebar::sidebar}"></div>
+    </div>
 
     <!-- if user is not logged in :navbar -->
     <div data-th-unless="${loggedInUser}">
@@ -32,7 +35,15 @@
 
     <!-- main content -->
 
-    <div class=" p-4 mt-16 text-black">
+
+    <div data-th-if="${loggedInUser}" class=" p-4 mt-16  text-black">
+        <section class="sm:pl-64">
+            <section class="text-black  dark:text-white " data-th-replace="${content}"></section>
+        </section>
+
+    </div>
+
+    <div data-th-unless="${loggedInUser}" class=" p-4 mt-16 text-black">
         <section class="text-black dark:text-white " data-th-replace="${content}"></section>
     </div>
 
