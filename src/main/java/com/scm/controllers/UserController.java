@@ -54,4 +54,9 @@ public class UserController {
         return "user/profile";
     }
 
+    @RequestMapping(value = "user/feedback", method = { RequestMethod.POST, RequestMethod.GET })
+    public String userFeedback() {
+        return "user/feedback";
+    }
+
 }

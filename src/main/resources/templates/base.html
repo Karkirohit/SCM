@@ -36,19 +36,21 @@
     <!-- main content -->
 
 
-    <div data-th-if="${loggedInUser}" class=" p-4 mt-16  text-black">
+    <div data-th-if="${loggedInUser}" class=" p-4 mt-16 padding text-black">
         <section class="sm:pl-64">
             <section class="text-black  dark:text-white " data-th-replace="${content}"></section>
         </section>
 
     </div>
 
-    <div data-th-unless="${loggedInUser}" class=" p-4 mt-16 text-black">
+    <div data-th-unless="${loggedInUser}" class=" p-4 mt-16 padding text-black">
         <section class="text-black dark:text-white " data-th-replace="${content}"></section>
     </div>
 
 
     <!-- common footer -->
+    <div data-th-replace="~{footer::footer}"></div>
+
     <!-- <footer class="p-4">Footer:scm project</footer> -->
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>

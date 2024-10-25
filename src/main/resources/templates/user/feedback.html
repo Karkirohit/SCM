@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::parent(~{::#content},~{::title},~{::script})}">
+
+<head>
+    <title data-th-text="${loggedInUser.name}+'| SCM'">Profile Page</title>
+</head>
+
+<body>
+
+
+    <section id="content" class="mt-2  ">
+
+        <!-- if user is logged in :sidebar -->
+        <div data-th-if="${loggedInUser}">
+            <div data-th-replace="~{user/sidebar::sidebar}"></div>
+        </div>
+
+        <div class="text-center mt-auto  ">
+            <!-- Profile Page -->
+            <div class="max-w-lg mx-auto mt-16 p-6  bg-white dark:bg-gray-700 dark:text-white rounded-lg shadow-lg">
+                <div class="text-center ">
+                    <img data-th-src="@{${loggedInUser.profilePic}}" alt="Profile Picture"
+                        class="w-16 h-16 rounded-full mx-auto mb-4">
+                    <h2 class="text-xl font-semibold mb-2 text-gray-600 dark:text-white"
+                        data-th-text="${loggedInUser.name}">User Information</h2>
+                    <p class="text-gray-600 dark:text-white text-sm" data-th-text="${loggedInUser.email}">Email: <span
+                            class="font-medium">Your Email</span></p>
+                    <p class="text-gray-600 dark:text-white text-sm" data-th-text="${loggedInUser.phoneNumebr}">Phone
+                        Number: <span class="font-medium">Your Phone Number</span>
+                    <p class="text-gray-600 dark:text-white text-sm" data-th-text="${loggedInUser.about}">About: <span
+                            class="font-medium">About You</span></p>
+                    </p>
+
+                    <p class="text-blue-600 dark:text-white text-xl mt-4 mb-4 ">This is feedback from.</p>
+
+                    <div>
+                        <label for="feedback"></label>
+                        <textarea class="text-gray-600 dark:text-white text-sm rounded " name="feedback"
+                            cols="30"></textarea>
+
+                    </div>
+                    <!-- <div class="w-full flex justify-between">
+
+                        <p class="text-gray-600 dark:text-white text-sm">Email Verified: <span
+                                class="font-medium text-gray-600 dark:text-white"
+                                data-th-text="${loggedInUser.emailVerified?'YES':'NO'}"></span></p>
+                        <p class="text-gray-600 dark:text-white text-sm">Phone Verified: <span
+                                class="font-medium text-gray-600 dark:text-white"
+                                data-th-text="${loggedInUser.phoneVerified?'YES':'NO'}"></span></p>
+
+
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <script>
+        console.log("hello profile");
+    </script>
+</body>
+
+</html>
