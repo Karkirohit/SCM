@@ -99,7 +99,7 @@ public class ContactController {
 
     }
 
-    @RequestMapping
+    @RequestMapping("/con")
     public String viewContacts(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = AppConstants.PAGE_SIZE + "") int size,
@@ -114,10 +114,13 @@ public class ContactController {
 
         model.addAttribute("pageSize", AppConstants.PAGE_SIZE);
         model.addAttribute("pageContact", pageContact);
-
+        model.addAttribute("size", pageContact.getContent().size());
         model.addAttribute("contactSearchForm", new ContactSearchForm());
         return "user/contacts";
     }
+
+    // @RequestMapping("/sidebar")
+   
 
     @RequestMapping("/search")
     public String searchContacts(@ModelAttribute ContactSearchForm contactSearchForm,
@@ -153,7 +156,7 @@ public class ContactController {
         session.setAttribute("message",
                 Message.builder().content("Contact is Deleted successfully!!").type(MessageType.green).build());
         contactService.delete(contactId);
-        return "redirect:/user/contacts";
+        return "redirect:/user/contacts/con";
     }
 
     @GetMapping("/view/{contactId}")
