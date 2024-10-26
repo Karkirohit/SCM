@@ -8,7 +8,7 @@
 <body>
 
 
-    <section id="content" class="mt-2 sm:pl-64 ">
+    <section id="content" class="mt-2  ">
 
         <!-- if user is logged in :sidebar -->
         <div data-th-if="${loggedInUser}">
@@ -16,7 +16,7 @@
 
         </div>
 
-        <div class="bg-blue-500 text-center">
+        <div class="bg-blue-500 text-center rounded-lg">
             <h1 class="text-lime-400 font-bold">Search Page </h1>
             <P data-th-text="${pageContact.totalElements}+ ' results found'"></P>
             <div class="relative  overflow-x-auto shadow-md sm:rounded-lg">
@@ -55,7 +55,7 @@
 
                     </div>
                 </form>
-                <table data-th-unless="${pageContact.empty}"
+                <table data-th-unless="${pageContact.empty} "
                     class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
