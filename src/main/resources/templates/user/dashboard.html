@@ -19,116 +19,76 @@
 
         <div
             class="w-full   p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex items-center justify-between mb-4">
-                <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Latest Customers</h5>
-                <a href="/user/contacts" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
-                    View all
-                </a>
-            </div>
+
             <div class="flow-root">
+                <div class=" flex-1 rounded-3xl bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
 
-                <ul role="list" data-th-object="${c}" data-th-each="c:${pageContact}"
-                    class="divide-y divide-gray-200 dark:divide-gray-700">
+                    <!-- <div class="bg-gray-800 pt-3 rounded-3xl"> -->
+                    <div
+                        class="rounded-t-3xl bg-gradient-to-r from-blue-500 to-gray-900 p-4 shadow text-2xl text-white">
+                        <div class="flex items-center justify-between mb-4">
+                            <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Latest Customers
+                            </h5>
+                            <a href="/user/contacts"
+                                class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
+                                View all
+                            </a>
+                        </div>
+                    </div>
+                    <!-- </div> -->
 
-                    <li class="py-3 sm:py-4">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0">
-                                <img class="w-8 h-8 rounded-full" alt="Neil image"
-                                    onerror="this.src='https://tse3.mm.bing.net/th?id=OIP.Cl56H6WgxJ8npVqyhefTdQAAAA&pid=Api&P=0&h=180'"
-                                    data-th-src="@{*{picture}}">
+                    <div class="flex flex-wrap " data-th-object="${c}" data-th-each="c:${pageContact}">
+                        <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                            <!--Metric Card-->
+                            <div
+                                class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-500 rounded-lg shadow-xl p-5">
+                                <div class="flex lg:flex-row flex-col items-center">
+                                    <div class="flex-shrink my-2 lg:my-0 pr-4">
+                                        <div class="rounded-full  bg-blue-600">
+                                            <img class="w-14 h-14 rounded-full" alt="Neil image"
+                                                onerror="this.src='https://tse3.mm.bing.net/th?id=OIP.Cl56H6WgxJ8npVqyhefTdQAAAA&pid=Api&P=0&h=180'"
+                                                data-th-src="@{*{picture}}">
+                                        </div>
+                                    </div>
+                                    <div class="flex-1 my-2 lg:my-0 text-center">
+                                        <h5 class="font-bold uppercase text-gray-600" data-th-text="*{name}">Name</h5>
+                                        <h3 class="font-bold text-3xl" data-th-text="*{email}">Email</h3>
+                                    </div>
+                                    <div class="flex-1 my-2 lg:my-0  text-center">
+                                        <i class="fa-solid fa-phone w-4 h-4"></i>
+                                        <h5 class="font-bold uppercase text-gray-600" data-th-text="*{phoneNumber}">Name
+                                        </h5>
+                                        <!-- <h3 class="font-bold text-3xl" data-th-text="*{email}">Email</h3> -->
+                                    </div>
+                                    <div class="flex-1  text-center ">
+                                        <div class="font-bold my-2 lg:my-0 uppercase text-gray-600">
+                                            <a data-th-if="*{favorite}">
+                                                <i class="fa-solid fa-circle  rounded-full bg-green-500"></i>
+                                            </a>
+                                            <a data-th-href="@{*{webSitelink}}" target="_blank"><i
+                                                    class="fa-solid fa-link w-6 h-6"></i></a>
+                                            <a data-th-href="@{*{linkedinLink}}" target="_blank"><i
+                                                    class="fa-brands fa-linkedin w-6 h-6"></i></a>
+                                        </div>
+                                        <div class="font-bold my-2 lg:my-0 text-center ">
+                                            <button data-th-onclick="deleteContact([[${c.id}]])">
+                                                <i class="fa-solid fa-trash w-6 h-6"></i> </button>
+                                            <a data-th-href="@{'/user/contacts/view/'+*{id}}">
+                                                <i class="fa-solid fa-pen  w-6 h-6"></i>
+                                            </a>
+                                            <button data-th-onclick="loadContactData([[${c.id}]])">
+                                                <i class="fa-solid fa-eye  w-6 h-6"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flex-1 min-w-0 ms-4">
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white"
-                                    data-th-text="*{name}">
-                                    Neil Sims
-                                </p>
-                                <p class="text-sm text-gray-500 truncate dark:text-gray-400" data-th-text="*{email}">
-                                    email@windster.com
-                                </p>
-                            </div>
-                            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
-                                data-th-text="*{phoneNumber}">
-                                $320
-                            </div>
+                            <!--/Metric Card-->
                         </div>
-                    </li>
-                    <!-- <li class="py-3 sm:py-4">
-                        <div class="flex ite/docs/imagms-center ">
-                            <div class="flex-shrink-0">
-                                <img class="w-8 h-8 rounded-full" src="es/people/profile-picture-3.jpg"
-                                    alt="Bonnie image">
-                            </div>
-                            <div class="flex-1 min-w-0 ms-4">
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                    Bonnie Green
-                                </p>
-                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                    email@windster.com
-                                </p>
-                            </div>
-                            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                $3467
-                            </div>
-                        </div>
-                    </li>
-                    <li class="py-3 sm:py-4">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0">
-                                <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-2.jpg"
-                                    alt="Michael image">
-                            </div>
-                            <div class="flex-1 min-w-0 ms-4">
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                    Michael Gough
-                                </p>
-                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                    email@windster.com
-                                </p>
-                            </div>
-                            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                $67
-                            </div>
-                        </div>
-                    </li>
-                    <li class="py-3 sm:py-4">
-                        <div class="flex items-center ">
-                            <div class="flex-shrink-0">
-                                <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-4.jpg"
-                                    alt="Lana image">
-                            </div>
-                            <div class="flex-1 min-w-0 ms-4">
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                    Lana Byrd
-                                </p>
-                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                    email@windster.com
-                                </p>
-                            </div>
-                            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                $367
-                            </div>
-                        </div>
-                    </li>
-                    <li class="pt-3 pb-0 sm:pt-4">
-                        <div class="flex items-center ">
-                            <div class="flex-shrink-0">
-                                <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-5.jpg"
-                                    alt="Thomas image">
-                            </div>
-                            <div class="flex-1 min-w-0 ms-4">
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                    Thomes Lean
-                                </p>
-                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                    email@windster.com
-                                </p>
-                            </div>
-                            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                $2367
-                            </div>
-                        </div>
-                    </li> -->
-                </ul>
+
+
+                    </div>
+                </div>
             </div>
         </div>
 

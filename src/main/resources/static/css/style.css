@@ -920,8 +920,9 @@ input[type="checkbox"] {
 .footer {
     padding-top: 6rem;
     padding-bottom: 3rem;
-    background: linear-gradient(rgba(255, 255, 255, 1), rgba(197, 234, 249, 1));
+    /* background: linear-gradient(rgba(255, 255, 255, 1), rgba(197, 234, 249, 1)); */
     text-align: center;
+    color: #000000;
 }
 
 .footer a {
